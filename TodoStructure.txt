@@ -1,0 +1,20 @@
+todo project
+|
+|---todo app(app folder)
+    |
+    ----migrations(database stuffs)
+    |
+    ----templates
+        |
+        todolist.html
+        todoform.html
+        updatetodo.html
+    |
+    |
+    ----models.py
+    ----forms.py
+    ----urls.py
+    ----views.py
+
+settings.py
+urls.py
