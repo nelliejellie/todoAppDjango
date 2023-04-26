@@ -7,3 +7,12 @@ def say_hello(request):
 
 def todos_list(request):
     return render(request, 'todos.html', {'name':'Dubem'})
+
+def todo_form(request):
+    return render(request, 'todo_form.html')
+
+def todo_delete(request):
+    return
+
+def todo_update(request):
+    return

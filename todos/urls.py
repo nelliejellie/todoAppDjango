@@ -4,5 +4,6 @@ from . import views
 #urlconfig
 urlpatterns = [
     path('hello/', views.say_hello),
-    path('', views.todos_list)
+    path('', views.todos_list),
+    path('form', views.todo_form)
 ]
