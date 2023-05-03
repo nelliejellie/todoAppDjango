@@ -5,7 +5,11 @@ from .models import userProfile
 class TodoForm(forms.ModelForm):
     class Meta:
         model = Todo_Entity
-        fields = '__all__'
+        fields = {'title','description','createdAt','user'}
+
+    def __init__(self, *args, **kwargs):
+        super(TodoForm,self).__init__(*args, **kwargs)
+        self.fields['user'].empty_label = "Select User"
 
 class UserForm(forms.ModelForm):
     class Meta:
