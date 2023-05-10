@@ -7,16 +7,34 @@
      <table class="table table-borderless">
         <thead class="border-bottom font-weight-bold">
             <tr>
-                <td>Title</td>
-                <td>description</td>
-                <td>user</td>
-                <td>done?</td>
+                <td><h2>Title</h2></td>
+                <td><h2>Description</h2></td>
+                <td><h2>User</h2></td>
+                <td><h2>Done?</h2></td>
             </tr>
         </thead>
+         <tbody>
+            {% for todo in todos %}
+                <tr>
+                    <td>{{todo.title}}</td>
+                    <td>{{todo.description}}</td>
+                    <td>{{todo.user}}</td>
+                    <td class="container row">
+                        <form method="post" action="{% url 'todos:todo_list' %}">
+                            {% csrf_token %}
+                            <span class="col-sm-6">{{todo.done}}</span>
+                            <input type="hidden" value='{{todo.id}}' name="status">
+                            <button class="col-sm-6" type="submit" class="btn btn-success"><i class="fas fa-database"> change</i></button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+         </tbody>
      </table>
 </div>
 <div>
     <form method="post">
+        {% csrf_token %}
         {{form|crispy}}
          <div class="mt-4">
             <button type="submit" class="btn btn-success"><i class="fas fa-database"> Create a User</i></button>
