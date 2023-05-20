@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .forms import TodoForm
 from .forms import UserForm
@@ -40,10 +40,13 @@ def todo_form(request):
         if form.is_valid():
             form.save()
         return redirect('/')
-def todo_delete(request):
-    return
+def todo_delete(request, id):
+    myObject =get_object_or_404(Todo_Entity, id=id)
+    myObject.delete()
+    return redirect('/')
 
 def todo_update_status(request):
     if request.method == "POST":
         status = request.POST.get('status')
         print(status + 1)
+        return HttpResponse('yeah')
