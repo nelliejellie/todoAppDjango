@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Log in</h1>
+{% if form.errors %}
+<p>
+  please check your username and password
+</p>
+{% else %}
+<p>
+  please use the following form to login
+</p>
+<div>
+ <form method="post">
+   {{ form.as_p }}
+   {% csrf_token %}
+   <p>
+     <input type="submit" value="login"/>
+   </p>
+ </form>
+  <p>
+    <a href="#">
+      forget password
+    </a>
+  </p>
+</div>
+{% endif %}
+{% endblock %}

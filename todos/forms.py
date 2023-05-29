@@ -16,4 +16,9 @@ class UserForm(forms.ModelForm):
         model = userProfile
         fields = '__all__'
 
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+
 # use tuple to provide fields if not all

@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from .forms import TodoForm
 from .forms import UserForm
 from .models import Todo_Entity
+from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import reverse_lazy
 
 # Create your views here.
 def say_hello(request):
@@ -50,3 +52,9 @@ def todo_update_status(request):
         status = request.POST.get('status')
         print(status + 1)
         return HttpResponse('yeah')
+
+class MyLoginView(LoginView):
+    template_name = 'registration/login.html'
+
+class MyLogoutView(LogoutView):
+    next_page = ('/')
